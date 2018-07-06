@@ -1,0 +1,36 @@
+﻿@model TesRoles.Models.GroupRoles
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>GroupRoles</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GroupRolesId" />
+            <div class="form-group">
+                <label asp-for="roles" class="control-label"></label>
+                <input asp-for="roles" class="form-control" />
+                <span asp-validation-for="roles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationGroupId" class="control-label"></label>
+                <select asp-for="ApplicationGroupId" class="form-control" asp-items="ViewBag.ApplicationGroupId"></select>
+                <span asp-validation-for="ApplicationGroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

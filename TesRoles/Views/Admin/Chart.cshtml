@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Chart";
+    Layout = "~/Views/Shared/_Syncfusion.cshtml";
+}
+
+<h2>Chart</h2>
+<div class="content-container-fluid">
+    <div class="row">
+        <div class="cols-sample-area">
+            <div id="container"></div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+            $("#container").ejChart(
+                {
+                    //Initializing Primary X Axis
+                    primaryXAxis:
+                        {
+                            title: { text: "Year" },
+                        },
+
+                    //Initializing Primary Y Axis
+                    primaryYAxis:
+                        {
+                            title: { text: "Price ($)" },
+                            labelFormat: '${value}'
+                        },
+
+                    //Initializing Crosshair
+                    crosshair:
+                        {
+                            visible: true,
+                            type: 'trackball',
+
+                            marker:
+                                {
+                                    shape: 'circle',
+                                    size:
+                                        {
+                                            height: 9,
+                                            width: 9
+                                        },
+                                    visible: true,
+                                    border: { width: 1 }
+                                },
+                            line:
+                                {
+                                    color: 'transparent'
+                                }
+                        },
+
+                    //Initializing Series	
+                    series:
+                        [
+                            {
+                                type: 'line',
+                                name: 'Keuntungan',
+                                enableAnimation: true,
+                                tooltip:
+                                    {
+                                        visible: true
+                                    },
+                                border: { width: 1 }
+                            }
+                        ],
+                    load: 'onchartload',
+                    isResponsive: true,
+                    title: { text: 'Revenue Analysis' },
+                    size: { height: "600" },
+                    legend: { visible: false }
+                });
+        });
+
+        function onchartload(sender) {
+            GetData();
+            loadTheme(sender);
+        }
+
+        function GetData() {
+            var obj = [];
+
+            $.ajax({
+                dataType: "json",
+                url: "/API/Report",
+                success: function (revenue) {
+                    $("#container").ejChart("option", { series: [{ dataSource: revenue, xName: "year", yName: "total" }] });
+                }
+            });
+        }
+    </script>
+}

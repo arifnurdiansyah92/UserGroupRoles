@@ -1,0 +1,15 @@
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\libhostpolicy.so
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\libhostfxr.so
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.deps.json
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.runtimeconfig.json
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.runtimeconfig.dev.json
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.dll
+D:\C#\repos\TesRoles\TesRoles\bin\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.pdb
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.csprojAssemblyReference.cache
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.csproj.CoreCompileInputs.cache
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\UserSecretsAssemblyInfo.cs
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.AssemblyInfoInputs.cache
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.AssemblyInfo.cs
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.dll
+D:\C#\repos\TesRoles\TesRoles\obj\Release\netcoreapp2.0\ubuntu.16.04-x64\TesRoles.pdb

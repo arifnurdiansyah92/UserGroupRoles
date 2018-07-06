@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewData["Title"] = "Report";
+    Layout = "~/Views/Shared/_Syncfusion.cshtml";
+}
+<br />
+<br />
+<h2>Report</h2>
+<div class="content-container-fluid">
+    <div class="row">
+        <input type="text" id="dropdown" />
+        <div class="cols-sample-area">
+            <div id="container"></div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script type="text/javascript" language="javascript">
+        function rebind() {
+            var month = $("#dropdown").data("ejDropDownList").getSelectedValue();
+            $.ajax({
+                dataType: "json",
+                url: "/API/Revenue/baju",
+                success: function (revenue) {
+                    var data = $.grep(revenue, function (e, i) {
+                        return e.bulan == month;
+                    });
+                    $("#container").ejChart("option", { series: [{ dataSource: data, xName: "bulan", yName: "total" }] });
+
+                    $("#container").ejChart("redraw");
+                }
+            });
+
+        }
+        Month = [{ bulan: "Januari" }, { bulan: "Februari" }, { bulan: "Maret" }, { bulan: "April" }, { bulan: "Mei" }, { bulan: "Juni  " }];
+        $('#dropdown').ejDropDownList({
+            dataSource: Month,
+            width: "100%",
+            watermarkText: "Select a month",
+            fields: { text: "bulan", value: "bulan" },
+            change: function (args) {
+                var month = $("#dropdown").data("ejDropDownList").getSelectedValue();
+                $.ajax({
+                    dataType: "json",
+                    url: "/API/Revenue/baju",
+                    success: function (revenue) {
+                        var data = $.grep(revenue, function (e, i) {
+                            return e.bulan == month;
+                        });
+                        $("#container").ejChart("option", { series: [{ dataSource: data, xName: "bulan", yName: "total" }] });
+
+                        $("#container").ejChart("redraw");
+                    }
+                });
+            }
+        });
+        $(function () {
+            
+            $("#container").ejChart(
+                {
+                    //Initializing Primary X Axis
+                    primaryXAxis:
+                        {
+                            title: { text: "Bulan" },
+                        },
+
+                    //Initializing Primary Y Axis
+                    primaryYAxis:
+                        {
+                            title: { text: "Total ($)" },
+                            labelFormat: '${value}'
+                        },
+
+                    //Initializing Crosshair
+                    crosshair:
+                        {
+                            visible: true,
+                            type: 'trackball',
+
+                            marker:
+                                {
+                                    shape: 'circle',
+                                    size:
+                                        {
+                                            height: 9,
+                                            width: 9
+                                        },
+                                    visible: true,
+                                    border: { width: 1 }
+                                },
+                            line:
+                                {
+                                    color: 'transparent'
+                                }
+                        },
+
+                    //Initializing Series
+                    series:
+                        [
+                            {
+                                type: 'bar',
+                                name: 'Keuntungan',
+                                enableAnimation: true,
+                                tooltip:
+                                    {
+                                        visible: true
+                                    },
+                                border: { width: 1 }
+                            }
+                        ],
+                    load: 'onchartload',
+                    isResponsive: true,
+                    title: { text: 'Revenue Analysis' },
+                    size: { height: "600" },
+                    legend: { visible: false }
+                });
+        });
+
+        function onchartload(sender) {
+            GetData();
+            loadTheme(sender);
+        }
+
+        function GetData() {
+            var obj = [];
+
+            $.ajax({
+                dataType: "json",
+                url: "/API/Revenue/baju",
+                success: function (revenue) {
+              
+                  
+                    $("#container").ejChart("option", { series: [{ dataSource: revenue, xName: "bulan", yName: "total" }] });
+                }
+            });
+        }
+    </script>
+}
